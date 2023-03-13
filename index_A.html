@@ -1,0 +1,41 @@
+<html>
+  <head>
+    <script src="https://code.jquery.com/jquery-3.4.1.js"></script>
+    <script>
+      function subscribe() {
+        var email = prompt("What is your email?", "????");
+
+        $.post({
+          type: "POST",
+          url: "email",
+          data: email,
+          contentType: "application/text; charset=utf-8",
+          dataType: "json"
+        }).done(function(data) {
+          alert(data);
+        }).fail(function(data) {
+          alert("POST failed");
+        });
+      }
+    </script>
+  </head>
+
+  <body>
+    <h1 style="text-align:center">A Database of Metro Transit Ridership By Stop</h1>
+
+    <p style="text-align:center">This database displays metro transit ridership data for stops in the Madison area</p>
+     
+    <div style="text-align:center">
+        <button onclick="subscribe()">Subscribe</button>
+        <a href = "browse.html"> browse.html </a>
+        <a href = "donate.html?from=A"> donate.html </a>
+    </div>
+    
+    <h2 style="text-align:center"> Line Graph Displaying the Traffic on Sunday for the first 10 stop ID's in the CSV </h2>
+    <img style="text-align:center" src="dashboard_1.svg"><br><br>
+    <h2 style="text-align:center"> Bar Graph Displaying the Traffic on Saturday for the first 10 stop ID's in the CSV </h2>
+    <img style="text-align:center" src="dashboard_1.svg?plot=bar"><br><br>
+    <h2 style="text-align:center"> Bar Graph Displaying Stop ID vs Intersection ID for the first 10 stops in the CSV </h2>
+    <img style="text-align:center" src="dashboard_2.svg"><br><br>
+  </body>
+</html>
